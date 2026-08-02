@@ -4,33 +4,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Annas Surdyanto — Principal Software Engineer</title>
-<meta name="description" content="Annas Surdyanto: Principal Software Engineer — Mobile Architecture & Engineering Leadership">
-<meta property="og:title" content="Annas Surdyanto — Principal Software Engineer">
+<title>Annas Surdyanto — Software Engineer</title>
+<meta name="description" content="Annas Surdyanto: Software Engineer — Mobile Architecture & Engineering Leadership">
+<meta property="og:title" content="Annas Surdyanto — Software Engineer">
 <meta property="og:description" content="Mobile Architecture & Engineering Leadership. Kotlin, Swift, Go, React/Next.js.">
 <meta property="og:type" content="website">
 <link rel="icon" href="https://cdn.statically.io/icon/g/t.png" type="image/png">
 <style>
   :root {
-    --bg: #fbfaf8;
+    --bg: #f4f5f8;
     --surface: #ffffff;
-    --text: #1c1c1a;
-    --text-dim: #63625c;
-    --border: #e7e4dd;
-    --accent: #2f6f4f;
-    --accent-soft: #e8f2ec;
-    --radius: 14px;
+    --text: #12141c;
+    --text-dim: #5b5f70;
+    --border: #dcdfe8;
+    --accent: #4550e5;
+    --accent-soft: #e7e8fb;
+    --radius: 8px;
     --maxw: 760px;
+    --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     color-scheme: light;
   }
   [data-theme="dark"] {
-    --bg: #14140f;
-    --surface: #1b1b15;
-    --text: #f1efe8;
-    --text-dim: #a5a294;
-    --border: #302f27;
-    --accent: #6fcf9a;
-    --accent-soft: #1e2b23;
+    --bg: #0b0d14;
+    --surface: #12141d;
+    --text: #e9eaf2;
+    --text-dim: #8b8fa3;
+    --border: #262a3a;
+    --accent: #818cf8;
+    --accent-2: #2dd4c8;
+    --accent-soft: #1c1f33;
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
@@ -39,7 +41,7 @@
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Segoe UI", sans-serif;
+    font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     transition: background .25s ease, color .25s ease;
@@ -60,14 +62,14 @@
     max-width: var(--maxw); margin: 0 auto; padding: 12px 24px;
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
   }
-  .topbar-name { font-weight: 600; font-size: 0.95rem; letter-spacing: .01em; }
+  .topbar-name { font-family: var(--font-mono); font-weight: 600; font-size: 0.95rem; letter-spacing: .01em; }
   .topbar-actions { display: flex; align-items: center; gap: 14px; }
   .nav-links { display: flex; gap: 16px; font-size: .88rem; color: var(--text-dim); }
   .nav-links a { color: var(--text-dim); }
   .nav-links a:hover { color: var(--accent); }
   .theme-toggle {
     border: 1px solid var(--border); background: var(--surface); color: var(--text);
-    width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+    width: 32px; height: 32px; border-radius: var(--radius); cursor: pointer;
     display: flex; align-items: center; justify-content: center; font-size: 15px;
     transition: transform .2s ease, border-color .2s ease;
   }
@@ -75,30 +77,71 @@
 
   /* ---- hero ---- */
   header.hero { padding: 64px 0 36px; }
-  .eyebrow { color: var(--accent); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
-  h1.name { font-size: clamp(2rem, 5vw, 2.7rem); margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; }
+  .hero-top { display: flex; align-items: center; gap: 22px; margin-bottom: 6px; }
+  .avatar {
+    width: 132px; height: 132px; border-radius: 18px; object-fit: cover; object-position: 50% 22%;
+    flex-shrink: 0; border: 1px solid var(--border);
+  }
+  @media (max-width: 560px) {
+    .hero-top { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .avatar { width: 104px; height: 104px; }
+  }
+  .eyebrow {
+    color: var(--accent); font-family: var(--font-mono); font-size: .78rem; font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .eyebrow::before { content: "// "; color: var(--text-dim); }
+  h1.name { font-size: clamp(2rem, 5vw, 2.7rem); margin: 0 0 6px; font-weight: 800; letter-spacing: -0.02em; }
   .title { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 18px; }
-  .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .88rem; color: var(--text-dim); margin-bottom: 20px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .86rem; font-family: var(--font-mono); color: var(--text-dim); margin-bottom: 20px; }
   .meta-row span { display: inline-flex; align-items: center; gap: 6px; }
   .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
   .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 9px 16px; border-radius: 999px; font-size: .88rem; font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 9px 16px; border-radius: var(--radius); font-size: .88rem; font-weight: 600;
     border: 1px solid var(--border); background: var(--surface); color: var(--text);
     transition: all .18s ease;
   }
+  @media (max-width: 560px) {
+    .cta-row { display: grid; grid-template-columns: 1fr 1fr; }
+  }
   .btn:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .btn.primary:hover { color: #fff; opacity: .92; filter: brightness(1.05); }
+  .btn.primary:hover { color: #fff; opacity: .92; filter: brightness(1.08); }
+  .btn-ic { width: 16px; height: 16px; flex-shrink: 0; display: flex; }
+  .btn-ic svg { width: 16px; height: 16px; fill: currentColor; }
+  @media (max-width: 560px) {
+    .btn { padding: 13px 8px; position: relative; }
+    .btn-ic { width: 20px; height: 20px; }
+    .btn-ic svg { width: 20px; height: 20px; }
+    .btn-label {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+  }
+
+  .stats-row { display: flex; gap: 0; margin-top: 28px; border-top: 1px solid var(--border); }
+  .stat {
+    flex: 1; padding: 16px 18px 0; border-left: 1px solid var(--border);
+  }
+  .stat:first-child { border-left: none; padding-left: 0; }
+  .stat-num { display: block; font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+  .stat-label { display: block; font-size: .76rem; color: var(--text-dim); margin-top: 4px; line-height: 1.4; }
+  @media (max-width: 560px) {
+    .stats-row { flex-wrap: wrap; }
+    .stat { flex: 1 1 40%; border-left: none; border-top: 1px solid var(--border); padding: 14px 0 0; margin-top: 14px; }
+    .stat:first-child { margin-top: 0; border-top: none; }
+  }
 
   /* ---- sections ---- */
   main { padding-bottom: 40px; }
   section { padding: 34px 0; border-top: 1px solid var(--border); }
   section:first-of-type { border-top: none; }
   h2.section-title {
-    font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    font-family: var(--font-mono); font-size: .76rem; font-weight: 500;
     color: var(--text-dim); margin: 0 0 20px;
   }
+  h2.section-title::before { content: "> "; color: var(--accent); }
   .summary { font-size: 1.02rem; color: var(--text); max-width: 66ch; }
 
   /* ---- skills ---- */
@@ -107,9 +150,9 @@
   .skill-row { }
   .skill-label { display: flex; justify-content: space-between; font-size: .86rem; margin-bottom: 5px; }
   .skill-label span:last-child { color: var(--text-dim); }
-  .skill-bar { height: 5px; border-radius: 999px; background: var(--accent-soft); overflow: hidden; }
+  .skill-bar { height: 5px; border-radius: 2px; background: var(--accent-soft); overflow: hidden; }
   .skill-bar > i {
-    display: block; height: 100%; border-radius: 999px; background: var(--accent);
+    display: block; height: 100%; border-radius: 2px; background: var(--accent);
     width: 0; transition: width 1s cubic-bezier(.22,.8,.3,1);
   }
   .skill-bar.filled > i { width: var(--pct); }
@@ -118,7 +161,8 @@
   .tabs { display: flex; gap: 6px; margin-bottom: 22px; flex-wrap: wrap; }
   .tab-btn {
     border: 1px solid var(--border); background: var(--surface); color: var(--text-dim);
-    padding: 7px 14px; border-radius: 999px; font-size: .84rem; font-weight: 600; cursor: pointer;
+    padding: 7px 14px; border-radius: var(--radius); font-size: .84rem; font-weight: 600; cursor: pointer;
+    font-family: var(--font-mono);
     transition: all .18s ease;
   }
   .tab-btn:hover { color: var(--text); }
@@ -137,7 +181,7 @@
   .entry-org { font-weight: 700; font-size: 1rem; }
   .entry-org a { color: var(--text); }
   .entry-org a:hover { color: var(--accent); }
-  .entry-period { font-size: .8rem; color: var(--text-dim); white-space: nowrap; }
+  .entry-period { font-size: .78rem; font-family: var(--font-mono); color: var(--text-dim); white-space: nowrap; }
   .entry-role { color: var(--accent); font-weight: 600; font-size: .9rem; margin-top: 2px; }
   .entry-loc { color: var(--text-dim); font-size: .8rem; margin-top: 1px; }
   .entry ul { margin: 10px 0 0; padding-left: 18px; font-size: .92rem; color: var(--text); }
@@ -149,6 +193,19 @@
   .plain-list li { font-size: .92rem; display: flex; gap: 8px; align-items: baseline; }
   .plain-list li::before { content: "—"; color: var(--accent); flex-shrink: 0; }
 
+  /* ---- repos ---- */
+  .repo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 560px) { .repo-grid { grid-template-columns: 1fr; } }
+  .repo-card {
+    display: block; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); color: var(--text); transition: all .18s ease;
+  }
+  .repo-card:hover { border-color: var(--accent); transform: translateY(-1px); text-decoration: none; }
+  .repo-name { font-family: var(--font-mono); font-weight: 600; font-size: .92rem; color: var(--accent); margin-bottom: 6px; }
+  .repo-desc { font-size: .85rem; color: var(--text-dim); margin: 0 0 12px; line-height: 1.5; }
+  .repo-meta { display: flex; gap: 14px; font-size: .78rem; font-family: var(--font-mono); color: var(--text-dim); align-items: center; }
+  .lang-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--lang); margin-right: 5px; vertical-align: middle; }
+
   .edu-item + .edu-item, .award-item { margin-top: 14px; }
   .edu-org { font-weight: 700; font-size: .95rem; }
   .edu-deg { color: var(--accent); font-size: .88rem; font-weight: 600; }
@@ -159,8 +216,8 @@
   .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 10px; }
   .contact-card {
     display: flex; align-items: center; gap: 10px;
-    padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
-    font-size: .88rem; color: var(--text); transition: all .18s ease;
+    padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface);
+    font-size: .86rem; font-family: var(--font-mono); color: var(--text); transition: all .18s ease;
   }
   .contact-card:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; transform: translateY(-1px); }
   .contact-card .ic { width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); }
@@ -192,18 +249,51 @@
 
   <div class="wrap">
     <header class="hero">
-      <div class="eyebrow">Mobile Architecture &amp; Full-Stack Engineering</div>
-      <h1 class="name">Annas Surdyanto</h1>
-      <p class="title">Principal Software Engineer — Mobile Architecture &amp; Engineering Leadership</p>
+      <div class="hero-top">
+        <img class="avatar" src="annas-profile-picture.jpg" alt="Annas Surdyanto" width="132" height="132">
+        <div>
+          <div class="eyebrow">Mobile Architecture &amp; Full-Stack Engineering</div>
+          <h1 class="name">Annas Surdyanto</h1>
+          <p class="title">Software Engineer — Mobile Architecture &amp; Engineering Leadership</p>
+        </div>
+      </div>
       <div class="meta-row">
         <span>📍 Tangerang, Indonesia</span>
         <span>📞 +62 812‑9182‑7229</span>
         <span>✉️ annas.surdyanto@gmail.com</span>
       </div>
       <div class="cta-row">
-        <a class="btn primary" href="mailto:annas.surdyanto@gmail.com">Get in touch</a>
-        <a class="btn" href="https://github.com/annasta13" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://www.linkedin.com/in/annas-surdyanto/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn primary" href="mailto:annas.surdyanto@gmail.com" aria-label="Get in touch">
+          <span class="btn-ic"><svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 12V8.24l-8 6-8-6V18h16z"/></svg></span>
+          <span class="btn-label">Get in touch</span>
+        </a>
+        <a class="btn" href="CV-Annas-Surdyanto.pdf" download aria-label="Download CV">
+          <span class="btn-ic"><svg viewBox="0 0 24 24"><path d="M12 3a1 1 0 011 1v9.59l3.3-3.3a1 1 0 111.4 1.42l-5 5a1 1 0 01-1.4 0l-5-5a1 1 0 111.4-1.42l3.3 3.3V4a1 1 0 011-1zM5 19a1 1 0 011-1h12a1 1 0 110 2H6a1 1 0 01-1-1z"/></svg></span>
+          <span class="btn-label">Download CV</span>
+        </a>
+        <a class="btn" href="https://github.com/annasta13" target="_blank" rel="noopener" aria-label="GitHub">
+          <span class="btn-ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.19c0 4.49 2.87 8.3 6.84 9.65.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.61-3.37-1.21-3.37-1.21-.46-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.27 2.75 1.05a9.3 9.3 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0022 12.19C22 6.58 17.52 2 12 2z"/></svg></span>
+          <span class="btn-label">GitHub</span>
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/annas-surdyanto/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <span class="btn-ic"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.64h.05c.53-.99 1.82-2.03 3.75-2.03 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.42-2.11 2.9V21h-4V9z"/></svg></span>
+          <span class="btn-label">LinkedIn</span>
+        </a>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-num">100K+</span>
+          <span class="stat-label">Downloads<br>English Grammar Expert</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">10K+</span>
+          <span class="stat-label">Downloads<br>Quranku</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">99%</span>
+          <span class="stat-label">Crash-free<br>sessions</span>
+        </div>
       </div>
     </header>
 
@@ -393,6 +483,30 @@
           <li><a href="https://betterprogramming.pub/exporting-data-as-pdf-in-android-ca6522e77b9b" target="_blank" rel="noopener">PDF Export Feature in Android: Simple iText Tips</a> — Better Programming</li>
           <li><a href="https://betterprogramming.pub/kotlin-multiplatform-mobile-is-it-a-comfortable-bridge-fb724a9f3a0c" target="_blank" rel="noopener">Kotlin Multiplatform Mobile: The Definitive Cross-platform Bridge</a> — Better Programming</li>
         </ul>
+      </section>
+
+      <section id="opensource" class="reveal">
+        <h2 class="section-title">Open Source</h2>
+        <div class="repo-grid">
+          <a class="repo-card" href="https://github.com/annasta13/The-Movies" target="_blank" rel="noopener">
+            <div class="repo-name">The-Movies</div>
+            <p class="repo-desc">Clean Architecture Kotlin Multiplatform Mobile (KMM) with Android Instrument Test and Unit Test.</p>
+            <div class="repo-meta">
+              <span><i class="lang-dot" style="--lang:#7f52ff"></i>Kotlin</span>
+              <span>23 stars</span>
+              <span>4 forks</span>
+            </div>
+          </a>
+          <a class="repo-card" href="https://github.com/annasta13/Pdf-Export" target="_blank" rel="noopener">
+            <div class="repo-name">Pdf-Export</div>
+            <p class="repo-desc">Sample project of PDF export in Android — companion code for the Better Programming article.</p>
+            <div class="repo-meta">
+              <span><i class="lang-dot" style="--lang:#7f52ff"></i>Kotlin</span>
+              <span>7 stars</span>
+              <span>2 forks</span>
+            </div>
+          </a>
+        </div>
       </section>
     </main>
 
