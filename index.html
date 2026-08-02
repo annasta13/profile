@@ -2,125 +2,488 @@
 <html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Annas Surdyanto — Principal Software Engineer</title>
+<meta name="description" content="Annas Surdyanto: Principal Software Engineer — Mobile Architecture & Engineering Leadership">
+<meta property="og:title" content="Annas Surdyanto — Principal Software Engineer">
+<meta property="og:description" content="Mobile Architecture & Engineering Leadership. Kotlin, Swift, Go, React/Next.js.">
+<meta property="og:type" content="website">
+<link rel="icon" href="https://cdn.statically.io/icon/g/t.png" type="image/png">
+<style>
+  :root {
+    --bg: #fbfaf8;
+    --surface: #ffffff;
+    --text: #1c1c1a;
+    --text-dim: #63625c;
+    --border: #e7e4dd;
+    --accent: #2f6f4f;
+    --accent-soft: #e8f2ec;
+    --radius: 14px;
+    --maxw: 760px;
+    color-scheme: light;
+  }
+  [data-theme="dark"] {
+    --bg: #14140f;
+    --surface: #1b1b15;
+    --text: #f1efe8;
+    --text-dim: #a5a294;
+    --border: #302f27;
+    --accent: #6fcf9a;
+    --accent-soft: #1e2b23;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .25s ease, color .25s ease;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annas Surdyanto: Android Engineerb</title>
-    <meta name="description" content="Annas Surdyanto: Android Engineer">
-    <meta name="github:card" content="summary_large_image">
-    <meta name="github:site" content="@annasta13">
-    <meta name="github:title" content="annasta13">
-    <meta name="github:description" content="Android, iOS, Frontend, Backend Engineer">
-    <link rel="icon" href="https://cdn.statically.io/icon/g/t.png" type="image/png">
-    <link rel="stylesheet" href="tailwind.min.css">
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---- top bar ---- */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    max-width: var(--maxw); margin: 0 auto; padding: 12px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .topbar-name { font-weight: 600; font-size: 0.95rem; letter-spacing: .01em; }
+  .topbar-actions { display: flex; align-items: center; gap: 14px; }
+  .nav-links { display: flex; gap: 16px; font-size: .88rem; color: var(--text-dim); }
+  .nav-links a { color: var(--text-dim); }
+  .nav-links a:hover { color: var(--accent); }
+  .theme-toggle {
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; font-size: 15px;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  .theme-toggle:hover { border-color: var(--accent); transform: scale(1.06); }
+
+  /* ---- hero ---- */
+  header.hero { padding: 64px 0 36px; }
+  .eyebrow { color: var(--accent); font-size: .8rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+  h1.name { font-size: clamp(2rem, 5vw, 2.7rem); margin: 0 0 6px; font-weight: 700; letter-spacing: -0.01em; }
+  .title { font-size: 1.05rem; color: var(--text-dim); margin: 0 0 18px; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: .88rem; color: var(--text-dim); margin-bottom: 20px; }
+  .meta-row span { display: inline-flex; align-items: center; gap: 6px; }
+  .cta-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px; border-radius: 999px; font-size: .88rem; font-weight: 600;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    transition: all .18s ease;
+  }
+  .btn:hover { text-decoration: none; border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { color: #fff; opacity: .92; filter: brightness(1.05); }
+
+  /* ---- sections ---- */
+  main { padding-bottom: 40px; }
+  section { padding: 34px 0; border-top: 1px solid var(--border); }
+  section:first-of-type { border-top: none; }
+  h2.section-title {
+    font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--text-dim); margin: 0 0 20px;
+  }
+  .summary { font-size: 1.02rem; color: var(--text); max-width: 66ch; }
+
+  /* ---- skills ---- */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; }
+  @media (max-width: 560px) { .skills-grid { grid-template-columns: 1fr; } }
+  .skill-row { }
+  .skill-label { display: flex; justify-content: space-between; font-size: .86rem; margin-bottom: 5px; }
+  .skill-label span:last-child { color: var(--text-dim); }
+  .skill-bar { height: 5px; border-radius: 999px; background: var(--accent-soft); overflow: hidden; }
+  .skill-bar > i {
+    display: block; height: 100%; border-radius: 999px; background: var(--accent);
+    width: 0; transition: width 1s cubic-bezier(.22,.8,.3,1);
+  }
+  .skill-bar.filled > i { width: var(--pct); }
+
+  /* ---- tabs ---- */
+  .tabs { display: flex; gap: 6px; margin-bottom: 22px; flex-wrap: wrap; }
+  .tab-btn {
+    border: 1px solid var(--border); background: var(--surface); color: var(--text-dim);
+    padding: 7px 14px; border-radius: 999px; font-size: .84rem; font-weight: 600; cursor: pointer;
+    transition: all .18s ease;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ---- timeline / cards ---- */
+  .entry { position: relative; padding-left: 22px; padding-bottom: 26px; border-left: 2px solid var(--border); margin-left: 3px; }
+  .entry:last-child { padding-bottom: 2px; }
+  .entry::before {
+    content: ""; position: absolute; left: -6px; top: 4px; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--bg);
+  }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+  .entry-org { font-weight: 700; font-size: 1rem; }
+  .entry-org a { color: var(--text); }
+  .entry-org a:hover { color: var(--accent); }
+  .entry-period { font-size: .8rem; color: var(--text-dim); white-space: nowrap; }
+  .entry-role { color: var(--accent); font-weight: 600; font-size: .9rem; margin-top: 2px; }
+  .entry-loc { color: var(--text-dim); font-size: .8rem; margin-top: 1px; }
+  .entry ul { margin: 10px 0 0; padding-left: 18px; font-size: .92rem; color: var(--text); }
+  .entry ul li { margin-bottom: 6px; }
+  .entry p.note { margin: 10px 0 0; font-size: .92rem; color: var(--text); }
+
+  /* ---- simple lists ---- */
+  .plain-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .plain-list li { font-size: .92rem; display: flex; gap: 8px; align-items: baseline; }
+  .plain-list li::before { content: "—"; color: var(--accent); flex-shrink: 0; }
+
+  .edu-item + .edu-item, .award-item { margin-top: 14px; }
+  .edu-org { font-weight: 700; font-size: .95rem; }
+  .edu-deg { color: var(--accent); font-size: .88rem; font-weight: 600; }
+  .edu-period { color: var(--text-dim); font-size: .8rem; }
+
+  /* ---- footer / contact ---- */
+  footer { padding: 40px 0 60px; }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 10px; }
+  .contact-card {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+    font-size: .88rem; color: var(--text); transition: all .18s ease;
+  }
+  .contact-card:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; transform: translateY(-1px); }
+  .contact-card .ic { width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); }
+  .contact-card .ic svg { width: 18px; height: 18px; fill: currentColor; }
+  .foot-note { text-align: center; margin-top: 34px; font-size: .78rem; color: var(--text-dim); }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  ::selection { background: var(--accent-soft); color: var(--accent); }
+</style>
 </head>
 
-<body class="p-8 max-w-xl m-auto">
-    <header class="text-center mt-10">
-        <a href="https://annasta13.github.io/">
-            <h1 class="text-4xl font-bold">Annas Surdyanto</h1>
-        </a>
-        <h2 class="font-semibold">Android Engineer</h2>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <span class="topbar-name">Annas Surdyanto</span>
+      <div class="topbar-actions">
+        <nav class="nav-links">
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle theme">🌙</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <div class="eyebrow">Mobile Architecture &amp; Full-Stack Engineering</div>
+      <h1 class="name">Annas Surdyanto</h1>
+      <p class="title">Principal Software Engineer — Mobile Architecture &amp; Engineering Leadership</p>
+      <div class="meta-row">
+        <span>📍 Tangerang, Indonesia</span>
+        <span>📞 +62 812‑9182‑7229</span>
+        <span>✉️ annas.surdyanto@gmail.com</span>
+      </div>
+      <div class="cta-row">
+        <a class="btn primary" href="mailto:annas.surdyanto@gmail.com">Get in touch</a>
+        <a class="btn" href="https://github.com/annasta13" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/annas-surdyanto/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </header>
 
-    <main class="mt-10">
-        <p>A father with two children who is a well-organized and detail oriented end-to-end mobile app engineer having a private outstanding product installed by thousands of users around the world. Besides, he has successfully developed and published three Kotlin Multiplatform Mobile-based apps in both Android and iOS platforms from scratch within declarative UI approach reaching 98% crash free users. Providinga full stack engineering service, he also has successfully build an ecommerce website including its CMS with Go and Nextjs framework
-from scratch.</p>
+    <main>
+      <section id="summary" class="reveal">
+        <h2 class="section-title">Summary</h2>
+        <p class="summary">
+          Software engineer turned technical leader with a track record of continuously expanding scope —
+          from Android development in 2019, to iOS and backend engineering, to full-stack ownership of Go and
+          Next.js/React systems since 2023. Currently leads architecture and technical direction for the mobile
+          team at SawitPro, while independently founding, architecting, and operating <a href="https://jagocatat.com" target="_blank" rel="noopener">JagoCatat</a>
+          end‑to‑end as a solo engineer — spanning backend, frontend, infrastructure, and deployment. Comfortable
+          leading across platforms and stacks, with hands‑on depth in Kotlin, Swift, Go, and JavaScript/TypeScript,
+          and a habit of picking up new technical domains as needed.
+        </p>
+      </section>
 
-        <div class="mt-4">
-            <span class="mt-8 text-2xl font-semibold">Programming Language </span>
+      <section id="skills" class="reveal">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid" id="skillsGrid"></div>
+      </section>
+
+      <section id="experience" class="reveal">
+        <h2 class="section-title">Experience</h2>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="official">Official Works</button>
+          <button class="tab-btn" data-tab="founder">Founder Projects</button>
+          <button class="tab-btn" data-tab="freelance">Freelance</button>
         </div>
-        <div class="mt-2  ml-1">
-            <ul class="list-inside list-disc">
-                <li>Kotlin</li>
-                <li>Java</li>
-                <li>Swift</li>
-                <li>SwiftUI</li>
-                <li>Go</li>
-                <li>Nextjs, Typescript</li>
-            </ul>
-        </div>
 
-        <div class="mt-4">
-            <span class="mt-8 text-2xl font-semibold">Publications </span>
-        </div>
-        <div class="mt-2  ml-1">
-            <ul class="space-y-2 list-inside list-disc text-decoration: underline">
-                <li><a href="
-                https://medium.com/better-programming/pagination-in-kotlin-multiplatform-mobile-a96f21e71668"
-                target="_blank">
-                Pagination in Kotlin Multiplatform Mobile
-                </a></li>
-                <li><a href="https://betterprogramming.pub/exporting-data-as-pdf-in-android-ca6522e77b9b"
-                        target="_blank">
-                        Exporting Data as PDF in Android
-                    </a></li>
-                <li><a href="https://betterprogramming.pub/kotlin-multiplatform-mobile-is-it-a-comfortable-bridge-fb724a9f3a0c"
-                        target="_blank">
-                        Kotlin Multiplatform Mobile: The Definitive Cross-platform Bridge
-                    </a></li>
-            </ul>
-
-
-            <div class="mt-4">
-                <span class="mt-8 text-2xl font-semibold">Play Store </span>
+        <div class="tab-panel active" id="tab-official">
+          <div class="entry">
+            <div class="entry-head">
+              <span class="entry-org">Digital SawitPro</span>
+              <span class="entry-period">Apr 2026 – Present</span>
             </div>
-            <div class="mt-4">
-                <ul class="space-y-2 text-decoration: underline">
-                    <li><a class="flex items-center space-x-2"
-                            href="https://play.google.com/store/apps/details?id=com.habileducation.specializedenglishgrammar"
-                            target=”_blank”>
-                            <img class="flex items-center space-x-2 pl-1" width="30" viewBox="0 0 24 24"
-                                src="https://play-lh.googleusercontent.com/247C5LjJ8MqIuGgfTt_tV6lydyP5XYzrAnHFKzG3iQObP6h5Q7VB0n7w8HnQGqraT-o=s96-rw" />
-                            <span>English Grammar Expert</span></a></li>
-                    <li><a class="flex items-center space-x-1"
-                            href="https://play.google.com/store/apps/details?id=com.habileducation.quranku"
-                            target=”_blank”>
-                            <img class="flex items-center space-x-1" width="32" viewBox="0 0 24 24"
-                                src="https://play-lh.googleusercontent.com/xxrl6K35GvmZNIC3OfiofZ2oha3x7wLgsLTvwQaALAkyf02rj3UfnP-6lZn9seC8SHCe=w480-h960-rw" />
-                            <span>Al Quran Indonesia (Quranku)</span></a></li>
-                </ul>
+            <div class="entry-role">Principal Software Engineer / Architect (Team Lead)</div>
+            <div class="entry-loc">Jakarta, Indonesia</div>
+            <ul>
+              <li>Lead system design and technical direction for the Android platform, defining modularized architecture standards adopted across the mobile team.</li>
+              <li>Mentor and guide mobile engineers on architecture decisions, code quality, and best practices, acting as the technical reference point for the team.</li>
+              <li>Drive cross-functional product development decisions, partnering with product and backend teams to scope and design new features.</li>
+              <li>Contribute to Odoo implementation (initiated December 2025) to support internal business process digitization.</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="entry-head">
+              <span class="entry-org">Digital SawitPro</span>
+              <span class="entry-period">May 2023 – Mar 2026</span>
             </div>
+            <div class="entry-role">Senior Android Engineer (Team Lead)</div>
+            <div class="entry-loc">Jakarta, Indonesia</div>
+            <ul>
+              <li>Led mobile engineers in designing and implementing modularized Android architecture using Hilt, Room, Navigation Component, Work Manager, Kotlin Coroutine, Firebase, Maps, and Retrofit — a leadership role carried out from day one, ahead of formal promotion to Principal Software Engineer.</li>
+              <li>Contributed to iOS development using SwiftUI, building two years of cross-platform engineering experience alongside the Android leadership role.</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="entry-head">
+              <span class="entry-org">Vivere Group</span>
+              <span class="entry-period">Apr 2021 – Apr 2023</span>
+            </div>
+            <div class="entry-role">Mobile Application Engineer (Android &amp; iOS)</div>
+            <div class="entry-loc">South Tangerang, Indonesia</div>
+            <ul>
+              <li>Built end-to-end Android and iOS apps using Kotlin Multiplatform Mobile, Hilt, Jetpack Compose, SwiftUI, SQLDelight, Kotlin Coroutine, Firebase, Maps, and Ktor.</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="entry-head">
+              <span class="entry-org">Pamulang University</span>
+              <span class="entry-period">Sep 2015 – 2023</span>
+            </div>
+            <div class="entry-role">Lecturer</div>
+            <div class="entry-loc">South Tangerang, Indonesia</div>
+            <ul>
+              <li>Taught, designed, and developed content and curriculum for English subjects, while also contributing as a WordPress engineer for university web platforms.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-founder">
+          <div class="entry">
+            <div class="entry-head">
+              <span class="entry-org"><a href="https://jagocatat.com" target="_blank" rel="noopener">Jago Catat</a></span>
+              <span class="entry-period">Jun 2026 – Present</span>
+            </div>
+            <div class="entry-role">Owner &amp; Solo Engineer</div>
+            <div class="entry-loc">Tangerang, Indonesia</div>
+            <ul>
+              <li>Founded and independently built a SaaS product end-to-end — owning product design, system architecture, backend and frontend development, and deployment.</li>
+              <li>Built the core platform with Golang and React, integrating the Official WhatsApp Business API (WABA) to power the product's core workflows.</li>
+              <li>Single-handedly manage the full lifecycle: product strategy, engineering, infrastructure, and deployment, with no external engineering support.</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="entry-head">
+              <span class="entry-org"><a href="https://play.google.com/store/apps/details?id=com.habileducation.specializedenglishgrammar&hl=en" target="_blank" rel="noopener">English Grammar Expert</a></span>
+              <span class="entry-period">May 2019 – Present</span>
+            </div>
+            <div class="entry-role">Founder &amp; Android Developer</div>
+            <div class="entry-loc">Tangerang, Indonesia</div>
+            <ul>
+              <li>Founded and built the app architecture using Hilt, MVVM, Room, and Data Binding, with Google Play Billing integration for subscription monetization.</li>
+            </ul>
+          </div>
+          <div class="entry">
+            <div class="entry-head">
+              <span class="entry-org"><a href="https://play.google.com/store/apps/details?id=com.habileducation.quranku&hl=en" target="_blank" rel="noopener">Quranku</a></span>
+              <span class="entry-period">Dec 2019 – Present</span>
+            </div>
+            <div class="entry-role">Founder &amp; Android Developer</div>
+            <div class="entry-loc">Tangerang, Indonesia</div>
+            <ul>
+              <li>Founded and developed the app in Kotlin using Hilt, Room, Jetpack Compose, ExoPlayer, and YouTube IFrame integration.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="tab-freelance">
+          <div class="entry">
+            <div class="entry-head">
+              <span class="entry-org">Apex Nusantara</span>
+              <span class="entry-period">Sep 2024 – Present</span>
+            </div>
+            <div class="entry-role">Full Stack Engineer (Client Project)</div>
+            <div class="entry-loc">Tangerang, Indonesia</div>
+            <ul>
+              <li>Built and continue to maintain an end-to-end client website and CMS with Golang (backend) and Next.js/TypeScript (frontend), deployed via Docker and Portainer on a Linux VPS, with CI/CD set up to streamline deployment.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai" class="reveal">
+        <h2 class="section-title">AI Projects</h2>
+        <p class="summary">
+          Ongoing exploration of on-device and local LLM inference, including object detection pipelines with
+          TensorFlow Lite (MobileNet, EfficientDet, YOLOv9, published), on-device LLM integration on Android via
+          MediaPipe GenAI (Gemma 3), server-side inference experiments with Node.js, and local model testing
+          through Ollama and llama.cpp — reflecting a continued interest in applied AI/ML alongside core mobile
+          and full-stack work.
+        </p>
+      </section>
+
+      <section id="education" class="reveal">
+        <h2 class="section-title">Education</h2>
+        <div class="edu-item">
+          <div class="edu-org">University of Muhammadiyah Prof. Dr. Hamka</div>
+          <div class="edu-deg">Master's Degree, English Education</div>
+          <div class="edu-period">Sep 2012 – Jun 2015 · Jakarta</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-org">University of Muhammadiyah Prof. Dr. Hamka</div>
+          <div class="edu-deg">Bachelor's Degree, English Education</div>
+          <div class="edu-period">Sep 2007 – Dec 2011 · Jakarta</div>
+        </div>
+      </section>
+
+      <section id="certificates" class="reveal">
+        <h2 class="section-title">Certificates</h2>
+        <ul class="plain-list">
+          <li><a href="https://www.hackerrank.com/certificates/2737a885d025" target="_blank" rel="noopener">Hacker Rank Software Engineer</a></li>
+          <li><a href="https://www.dicoding.com/certificates/53XED0YNYPRN" target="_blank" rel="noopener">Learn to Create Flutter Apps for Beginners</a></li>
+          <li><a href="https://www.dicoding.com/certificates/L4PQ5NNRVZO1" target="_blank" rel="noopener">Getting Started with Dart Programming</a></li>
+          <li><a href="https://www.linkedin.com/learning/certificates/4e9955ab2ec079a339ecaa3aa6fdccfa48ee7071d9a624d44ba591291fb411e3" target="_blank" rel="noopener">Android Development Essential Training: App Architecture</a></li>
+          <li><a href="https://www.linkedin.com/learning/certificates/f4dc25a7b977efc4554539506947d29ec664729cb4587e9ee040be485ec40619" target="_blank" rel="noopener">Android Studio Essential Training</a></li>
+          <li><a href="https://www.linkedin.com/learning/certificates/ebcd16421ce2a3be77b7af9820e85be58797d94ee9b68befb15dbe54a66b895b" target="_blank" rel="noopener">Kotlin Essential Training</a></li>
+          <li><a href="https://www.linkedin.com/learning/certificates/ddfdd4421159cdad6174dfc8ce8d77bc41c69d4c83ba97e7b4266f4cbd7a5360" target="_blank" rel="noopener">Programming Foundations: Object-Oriented Design</a></li>
+          <li><a href="https://www.linkedin.com/learning/certificates/19a26cbbe837714bc7837c372bc3b313035536d5273efea99668e0654b75db61" target="_blank" rel="noopener">Learning Git and GitHub</a></li>
+          <li><a href="https://www.linkedin.com/learning/certificates/f47e251e4aeea5e087f293cc90b9b39addd9a58fd575f4f6ce45a994f0f2c54d" target="_blank" rel="noopener">RxJava: Design Patterns for Android Developers</a></li>
+        </ul>
+      </section>
+
+      <section id="awards" class="reveal">
+        <h2 class="section-title">Awards</h2>
+        <div class="award-item">
+          <div class="edu-org">Pengembangan Modul Mata Kuliah Critical Reading dengan Pendekatan Content and Language Integrated Learning (CLIL)</div>
+          <div class="edu-period">The Ministry of Research, Technology and Higher Education of the Republic of Indonesia · 2018–2019</div>
+        </div>
+      </section>
+
+      <section id="publications" class="reveal">
+        <h2 class="section-title">Publications</h2>
+        <ul class="plain-list">
+          <li><a href="https://medium.com/better-programming/pagination-in-kotlin-multiplatform-mobile-a96f21e71668" target="_blank" rel="noopener">Pagination in Kotlin Multiplatform Mobile</a> — Better Programming</li>
+          <li><a href="https://betterprogramming.pub/exporting-data-as-pdf-in-android-ca6522e77b9b" target="_blank" rel="noopener">PDF Export Feature in Android: Simple iText Tips</a> — Better Programming</li>
+          <li><a href="https://betterprogramming.pub/kotlin-multiplatform-mobile-is-it-a-comfortable-bridge-fb724a9f3a0c" target="_blank" rel="noopener">Kotlin Multiplatform Mobile: The Definitive Cross-platform Bridge</a> — Better Programming</li>
+        </ul>
+      </section>
     </main>
 
-    <footer class="mt-10 mb-20 text-sm">
-        <div>
-            <span class="mt-8 text-2xl font-semibold">Contact</span>
-        </div>
-        <div class="mt-2">
-            <ul class="space-y-4 ml-1">
-                <li><a class="flex items-center space-x-2"
-                        href="https://drive.google.com/file/d/1zN9Uf6tCNRmPrHVS2cR_wgWXCAicCAk1/view?usp=drivesdk"
-                        target=”_blank”>
-                        <img class="flex items-center space-x-2" width="24" height="24" viewBox="0 0 24 24"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/1667px-PDF_file_icon.svg.png" />
-                        <span>pdf - curriculum vitae</span></a></li>
-                <li><a class="flex items-center space-x-2" href="https://www.linkedin.com/in/annas-surdyanto-0099b2132"
-                        target=”_blank”>
-                        <img class="flex items-center space-x-2" width="24" height="24" viewBox="0 0 24 24"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png" />
-                        <span>linkedin - social network</span></a></li>
-                <li><a class="flex items-center space-x-2" href="https://github.com/annasta13" target=”_blank”>
-                        <img class="flex items-center space-x-2" width="24" height="24" viewBox="0 0 24 24"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/GitHub_Invertocat_Logo.svg/1200px-GitHub_Invertocat_Logo.svg.png" />
-                        <span>github - code collaboration</span></a></li>
-                <li><a class="flex items-center space-x-2"
-                        href="https://stackoverflow.com/users/12445365/annas-surdyanto" target=”_blank”>
-                        <img class="flex items-center space-x-2" width="24" height="24" viewBox="0 0 24 24"
-                            src="https://static-00.iconduck.com/assets.00/stack-overflow-icon-2048x2048-7ohycn5z.png" />
-                        <span>stackoverflow - code discussion</span></a></li>
-                <li><a class="flex items-center space-x-2"
-                        href="https://developers.google.com/profile/u/annas_surdyanto" target=”_blank”>
-                        <img class="flex items-center space-x-2" width="24" height="24" viewBox="0 0 24 24"
-                            src="https://dscucf.com/images/logo.png" />
-                        <span>google - android badges</span></a></li>
-                <li><a class="flex items-center space-x-2" href="mailto: annas.surdyanto@gmail.com" target=”_blank”>
-                        <img class="flex items-center space-x-2" width="24" height="24" viewBox="0 0 24 24"
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/800px-Gmail_icon_%282020%29.svg.png" />
-                        <span>email - annas.surdyanto@gmail.com</span></a></li>
-            </ul>
-        </div>
+    <footer id="contact" class="reveal">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:annas.surdyanto@gmail.com">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2v.01L12 12l8-5.99V6H4zm16 12V8.24l-8 6-8-6V18h16z"/></svg></span>
+          annas.surdyanto@gmail.com
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/annas-surdyanto/" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.8v1.64h.05c.53-.99 1.82-2.03 3.75-2.03 4.02 0 4.76 2.6 4.76 5.98V21h-4v-5.5c0-1.31-.02-3-1.83-3-1.83 0-2.11 1.42-2.11 2.9V21h-4V9z"/></svg></span>
+          LinkedIn
+        </a>
+        <a class="contact-card" href="https://github.com/annasta13" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.19c0 4.49 2.87 8.3 6.84 9.65.5.1.68-.22.68-.49 0-.24-.01-1.04-.01-1.89-2.78.61-3.37-1.21-3.37-1.21-.46-1.18-1.11-1.5-1.11-1.5-.91-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.55 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.72 0 0 .84-.27 2.75 1.05a9.3 9.3 0 015 0c1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.46.1 2.72.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0022 12.19C22 6.58 17.52 2 12 2z"/></svg></span>
+          GitHub
+        </a>
+        <a class="contact-card" href="https://jagocatat.com" target="_blank" rel="noopener">
+          <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm6.93 6H15.5c-.32-1.25-.78-2.45-1.38-3.56A8.03 8.03 0 0118.93 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14A7.96 7.96 0 014 12c0-.69.1-1.36.26-2h3.38a15.6 15.6 0 000 4H4.26zm.81 2h3.43c.32 1.25.78 2.45 1.38 3.56A7.99 7.99 0 015.07 16zm3.43-8H5.07a7.99 7.99 0 014.81-3.56C9.28 5.55 8.82 6.75 8.5 8zM12 19.96A15.3 15.3 0 0110.09 16h3.82a15.3 15.3 0 01-1.91 3.96zM14.34 14H9.66a13.6 13.6 0 010-4h4.68a13.6 13.6 0 010 4zm.16 5.56c.6-1.11 1.06-2.31 1.38-3.56h3.43a7.99 7.99 0 01-4.81 3.56zM16.24 14a15.6 15.6 0 000-4h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg></span>
+          jagocatat.com
+        </a>
+      </div>
+      <p class="foot-note">© 2026 Annas Surdyanto · Built with plain HTML, CSS &amp; JS</p>
     </footer>
+  </div>
+
+  <script>
+    // theme
+    const root = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    function applyTheme(t) {
+      root.setAttribute('data-theme', t);
+      toggle.textContent = t === 'dark' ? '☀️' : '🌙';
+    }
+    applyTheme(stored || (prefersDark ? 'dark' : 'light'));
+    toggle.addEventListener('click', () => {
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('theme', next);
+    });
+
+    // skills
+    const skills = [
+      { name: 'Kotlin, Java', level: 5 },
+      { name: 'Jetpack Compose', level: 5 },
+      { name: 'Technical Leadership & Mentoring', level: 5 },
+      { name: 'System / Architecture Design', level: 4 },
+      { name: 'SwiftUI, Swift', level: 4 },
+      { name: 'CI/CD', level: 4 },
+      { name: 'Version Control', level: 4 },
+      { name: 'React, Next.js, JavaScript', level: 4 },
+      { name: 'Golang', level: 4 },
+      { name: 'Odoo Implementation', level: 3 },
+      { name: 'Indonesian, English', level: 4 },
+    ];
+    const grid = document.getElementById('skillsGrid');
+    skills.forEach(s => {
+      const row = document.createElement('div');
+      row.className = 'skill-row';
+      row.innerHTML = `
+        <div class="skill-label"><span>${s.name}</span><span>${s.level}/5</span></div>
+        <div class="skill-bar" style="--pct:${s.level * 20}%"><i></i></div>
+      `;
+      grid.appendChild(row);
+    });
+
+    // tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // reveal on scroll + skill bar fill
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          e.target.querySelectorAll('.skill-bar').forEach(b => b.classList.add('filled'));
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
 </body>
 
 </html>
