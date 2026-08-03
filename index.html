@@ -67,6 +67,10 @@
   .nav-links { display: flex; gap: 16px; font-size: .88rem; color: var(--text-dim); }
   .nav-links a { color: var(--text-dim); }
   .nav-links a:hover { color: var(--accent); }
+  @media (max-width: 560px) {
+    .topbar-name { display: none; }
+    .topbar-inner { justify-content: flex-end; }
+  }
   .theme-toggle {
     border: 1px solid var(--border); background: var(--surface); color: var(--text);
     width: 32px; height: 32px; border-radius: var(--radius); cursor: pointer;
